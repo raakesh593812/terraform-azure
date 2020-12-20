@@ -3,5 +3,6 @@ terraform {
     storage_account_name = "stotfstatetest123x"
     container_name       = "tfstate"
     key                  = "prod.terraform.tfstate"
+    sas_token            = "sas_token_actual_value"
   }
 }
