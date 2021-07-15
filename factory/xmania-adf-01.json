@@ -1,0 +1,9 @@
+{
+	"name": "xmania-adf-01",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d02ec08a-e03b-4821-b49e-046fc0d02105",
+		"tenantId": "765a8de5-cf94-44f0-9caf-ae5bf8cfa366"
+	}
+}
