@@ -20,9 +20,8 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "*",
-							"wildcardFileName": "*",
-							"enablePartitionDiscovery": false
+							"enablePartitionDiscovery": false,
+							"prefix": "sample"
 						},
 						"formatSettings": {
 							"type": "XmlReadSettings",
@@ -35,7 +34,39 @@
 						"azureTableInsertType": "replace",
 						"writeBatchSize": 10000
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['catalog']['book']['title']"
+								},
+								"sink": {
+									"name": "n1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['catalog']['book']['genre']"
+								},
+								"sink": {
+									"name": "n2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['catalog']['book']['price']"
+								},
+								"sink": {
+									"name": "n3",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
