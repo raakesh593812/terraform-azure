@@ -1,0 +1,24 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/xmlbkp/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/0e05831b-94ec-4875-9ac9-6adedc5a5a19/resourceGroups/Datafactory-rg/providers/Microsoft.Storage/storageAccounts/testxmadfz12",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
