@@ -20,12 +20,14 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"enablePartitionDiscovery": false,
-							"prefix": "sample"
+							"wildcardFolderPath": "*",
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
 							"type": "XmlReadSettings",
 							"validationMode": "none",
+							"detectDataType": false,
 							"namespaces": true
 						}
 					},
@@ -40,29 +42,37 @@
 						"mappings": [
 							{
 								"source": {
+									"path": "$['catalog']['book']['author']"
+								}
+							},
+							{
+								"source": {
 									"path": "$['catalog']['book']['title']"
-								},
-								"sink": {
-									"name": "n1",
-									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"path": "$['catalog']['book']['genre']"
-								},
-								"sink": {
-									"name": "n2",
-									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"path": "$['catalog']['book']['price']"
-								},
-								"sink": {
-									"name": "n3",
-									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['catalog']['book']['publish_date']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['catalog']['book']['description']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['catalog']['book']['@id']"
 								}
 							}
 						]
@@ -82,6 +92,11 @@
 				]
 			}
 		],
+		"variables": {
+			"filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
