@@ -6,12 +6,11 @@ read_vm(){
  for a in ${1}
  do
 
-disk_name=$(python2 /home/ramakrishna/pyt.py ${a})
 #vm_name
-vm_name=$(python2 /home/ramakrishna/pyt.py $(az disk show --ids "${a}" --query 'managedBy'))
+vm_name=$(az disk show --ids "${a}" --query 'managedBy')
 #disk type
 disk_type=$(az disk show --ids "${a}" --query 'sku.name')
-printf '%s\n' ${vm_name} ${disk_name} ${disk_type} | paste -sd ',' >> file.csv
+printf '%s\n' ${vm_name##*/} ${a##*/} ${disk_type} | paste -sd ',' >> file.csv
  done
  #return 1
 }
